@@ -1,0 +1,20 @@
+{
+  "short_name": "RoadHazeX",
+  "name": "RoadHazeX: AI Hazard Navigator",
+  "icons": [
+    {
+      "src": "/RoadHazeX_logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/RoadHazeX_logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0f172a",
+  "background_color": "#020617"
+}

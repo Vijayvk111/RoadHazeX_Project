@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "roadhazex"
+  },
+  "targets": {
+    "roadhazex": {
+      "hosting": {
+        "admin": [
+          "roadhazex-admin"
+        ],
+        "app": [
+          "roadhazex"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+
+.hero-container.cosmos-style {
+  position: relative;
+  width: 100%;
+  height: 300vh; /* Allow room for scrolling sections */
+  background: #000;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+.hero-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Side Menu */
+.side-menu {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  z-index: 9999;
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  width: 30px;
+  height: 2px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.vertical-text {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+/* Hero Content */
+.hero-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 12vw, 10rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+  perspective: 1000px;
+  color: #FF6B6B; /* Requested Red Color */
+  text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+}
+
+.title-char {
+  display: inline-block;
+  transform-style: preserve-3d;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  opacity: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff;
+  text-shadow: 
+    0 2px 4px rgba(0,0,0,0.8),
+    0 4px 12px rgba(0,0,0,0.6);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 20;
+  padding: 1rem 1.5rem;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.25) 0%, transparent 80%);
+  backdrop-filter: blur(2px);
+  border-radius: 20px;
+}
+
+.subtitle-line {
+  display: block;
+  overflow: visible;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.hero-content button {
+  pointer-events: auto;
+}
+
+/* Scroll Progress */
+.scroll-progress {
+  position: fixed;
+  right: 2rem;
+  bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  z-index: 100;
+}
+
+.scroll-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  opacity: 0.5;
+}
+
+.progress-track {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background: #fff;
+  transition: width 0.1s;
+}
+
+.section-counter {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
+/* Scroll Sections */
+.scroll-sections {
+  position: relative;
+  z-index: 5;
+  height: 300vh; /* Match the container height */
+}
+
+.content-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.section-inner {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.content-section button {
+    pointer-events: auto;
+}
+
+/* Hide the fixed hero content once we scroll away if needed, 
+   but the current logic seems to replace sections */
+@media (max-width: 768px) {
+  .side-menu {
+    left: 1rem;
+  }
+  .scroll-progress {
+    right: 1rem;
+  }
+}

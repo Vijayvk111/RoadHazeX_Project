@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">RoadHazeX</string>
+    <string name="title_activity_main">RoadHazeX</string>
+    <string name="package_name">com.roadhazex.app</string>
+    <string name="custom_url_scheme">com.roadhazex.app</string>
+</resources>

@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+*/node_modules/
+RoadHazeX_APP/node_modules/
+RoadHazeX_APP/RoadHazeX_Admin/node_modules/
+
+# Python Virtual Environments
+venv/
+*/venv/
+RoadHazeX_APP/venv/
+.venv/
+*/.venv/
+env/
+
+# Python Bytecode & Cache
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Large Model Weights (>100MB limit on GitHub)
+*.pt
+*.pth
+*.bin
+*.onnx
+*.weights
+*.h5
+
+# Large Archives & Zips
+*.zip
+*.tar.gz
+*.rar
+*.7z
+RoadHazeX_APP.zip
+
+# Build outputs
+dist/
+*/dist/
+build/
+*/build/
+out/
+.firebase/
+*/.firebase/
+
+# Environment variables & Sensitive keys
+.env
+.env.*
+*.env
+*.env.local
+*firebase-key*.json
+*serviceAccountKey*.json
+
+# Backups & Logs
+RoadHazeX_Backend_v2_backup/
+*.bak
+*.log
+push_err*
+ui_commit.txt
+
+# OS & Editor generated files
+.DS_Store
+Thumbs.db
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

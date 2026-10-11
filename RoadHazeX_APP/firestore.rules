@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Check if the user is an admin
+    function isAdmin() {
+      return request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['superadmin', 'admin', 'gcc_admin', 'state_highways_admin', 'nhai_admin', 'rural_admin'];
+    }
+
+    match /hazards/{hazardId} {
+      // Normal users can only read their OWN private reports, and create them.
+      // Admins can read/write everything.
+      allow read: if (request.auth != null && resource.data.userId == request.auth.uid) || isAdmin();
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      // Normal users CANNOT update status, assignments, or admin fields. Only admins can update/delete.
+      allow update, delete: if isAdmin();
+    }
+
+    match /publicHazards/{hazardId} {
+      // Anyone can read public hazards for map/geofencing
+      allow read: if true;
+      // Normal users can create their own public twin when submitting
+      allow create: if request.auth != null;
+      // Only admins can update public fields (e.g. status)
+      allow update, delete: if isAdmin();
+    }
+    
+    match /auditLogs/{logId} {
+      // Only admins can read/create audit logs. They are append-only.
+      allow read, create: if isAdmin();
+      allow update, delete: if false; // Append-only
+    }
+    
+    // Phase 8: Pilot Metrics & Bug Reports
+    match /bugReports/{bugId} {
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow read: if (request.auth != null && resource.data.userId == request.auth.uid) || isAdmin();
+      allow update, delete: if isAdmin();
+    }
+    
+    match /feedback/{feedbackId} {
+      allow create: if true; // Might not have user id
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      // Users can manage their own identity records
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow user to manage their own notifications, and admins to send notifications
+      match /notifications/{notifId} {
+        allow read, write: if (request.auth != null && request.auth.uid == userId) || isAdmin();
+      }
+    }
+    
+    match /partner_promotions/{promoId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && isAdmin();
+    }
+  }
+}

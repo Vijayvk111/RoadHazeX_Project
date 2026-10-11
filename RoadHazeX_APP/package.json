@@ -1,0 +1,45 @@
+{
+    "name": "roadhazex-prototype",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "build:admin": "cd RoadHazeX_Admin && npm run build",
+        "deploy:admin": "npm run build:admin && npx -p firebase-tools firebase deploy --only hosting:admin",
+        "deploy:app": "npm run build && npx -p firebase-tools firebase deploy --only hosting:app",
+        "deploy:all": "npm run build && npm run build:admin && npx -p firebase-tools firebase deploy"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4.1.18",
+        "autoprefixer": "^10.4.23",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^4.1.18",
+        "vite": "^7.3.1"
+    },
+    "dependencies": {
+        "@capacitor/android": "^8.4.1",
+        "@capacitor/app": "^8.1.0",
+        "@capacitor/camera": "^8.2.0",
+        "@capacitor/cli": "^8.4.1",
+        "@capacitor/core": "^8.4.1",
+        "@capacitor/geolocation": "^8.2.0",
+        "@capacitor/network": "^8.0.1",
+        "@carbon/icons-react": "^11.78.0",
+        "@clerk/clerk-react": "^5.60.0",
+        "@mapbox/polyline": "^1.2.1",
+        "@turf/turf": "^7.3.4",
+        "@vitejs/plugin-react": "^5.1.2",
+        "browser-image-compression": "^2.0.2",
+        "firebase": "^12.11.0",
+        "flask": "^0.2.10",
+        "gsap": "^3.14.2",
+        "lucide-react": "^1.8.0",
+        "maplibre-gl": "^5.21.0",
+        "puppeteer": "^25.2.1",
+        "react": "^19.2.3",
+        "react-dom": "^19.2.3",
+        "three": "^0.183.2"
+    }
+}

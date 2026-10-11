@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: 'Outfit', sans-serif;
+
+    --color-primary: #FF6B6B;
+    --color-secondary: #FF8E53;
+
+    --color-glass-100: rgba(255, 255, 255, 0.1);
+    --color-glass-200: rgba(255, 255, 255, 0.2);
+
+    --background-image-primary-gradient: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    --background-image-bg-gradient: linear-gradient(120deg, #1e3c72 0%, #2a5298 100%);
+}
+
+@layer base {
+    body {
+        @apply font-sans text-white bg-bg-gradient;
+        overflow-x: hidden;
+    }
+
+    #root {
+        @apply w-full h-full;
+    }
+}
+
+/* Custom Leaflet overrides */
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Custom Marker */
+.user-marker-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hazard-marker-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    transition: transform 0.2s;
+}
+
+.hazard-marker-custom:hover {
+    transform: scale(1.1);
+}
+
+/* Glassmorphism Utility */
+.glass-panel {
+    @apply bg-glass-100 backdrop-blur-xl border border-glass-200 shadow-2xl;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.3s ease-out forwards;
+}
+
+/* Login page animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop-in {
+    animation: popIn 0.3s cubic-bezier(0.25, 1.1, 0.4, 1) forwards;
+}

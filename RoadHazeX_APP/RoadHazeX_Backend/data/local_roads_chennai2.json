@@ -1,0 +1,3 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[80.1715726,13.0954731],[80.1715214,13.0948284],[80.1721912,13.0948093],[80.1722227,13.0954444],[80.1715726,13.0954731]]]},"properties":{"@id":"way/835258227","highway":"services","name":"BMW"},"id":"way/835258227"}
+]}

@@ -1,0 +1,19 @@
+Option 1: The Production Way (Host the AI on a Cloud Server)
+Just like how you hosted RoadHazeX_APP on Firebase, you need to host RoadHazeX_Backend on a live Backend Server. Since your AI uses CLIP and an SVM model, you can deploy it to Render.com, PythonAnywhere, or Hugging Face Spaces (which has great free tiers for Machine Learning apps).
+
+1)You upload app.py, your .joblib model, and a requirements.txt to the platform.
+
+2)The platform gives you a permanent URL (like https://roadhazexai.onrender.com/predict).
+
+3)You update ReportScreen.jsx to use that URL instead of the local tunnel, build the app, and it will work forever without your PC being on!
+
+Option 2: The Fast "Demo" Way (One-Click Startup Script)
+If this is just for a college project or a demo, you can automate what we just did today. You can create a simple start.bat file on your desktop with these two lines:
+
+In cmd: bat
+start cmd /k "python C:\Users\acer\Desktop\RoadHazeX\RoadHazeX_APP\RoadHazeX_Backend\app.py"
+start cmd /k "npx --yes localtunnel --port 5000 --subdomain roadhazexai"
+
+Whenever you know people are going to use the live app, you just double-click that file. It will instantly start the AI and the secure tunnel in the background so the live website can talk to your PC.
+
+My Recommendation: Option 1 is the true "Software Engineer" way and will make your app a 100% complete, standalone product. If you'd like, I can write the exact setup files to help you deploy the AI to a free cloud host!
